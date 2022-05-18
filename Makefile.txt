@@ -1,0 +1,21 @@
+CC=gcc
+# CFLAGS=-I.
+# DEPS = swim_mill.h
+# OBJ = swim_mill.o fish.o pellet.o
+TARGET = swim_mill fish pellet
+
+all: $(TARGET)
+
+swim_mill: swim_mill.c swim_mill.h
+	$(CC) -o swim_mill -pthread swim_mill.c swim_mill.h
+
+fish: fish.c
+	$(CC) -o fish.o -pthread fish.c
+
+pellet: pellet.c
+	$(CC) -o pellet.o -pthread pellet.c
+
+.PHONY: clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
